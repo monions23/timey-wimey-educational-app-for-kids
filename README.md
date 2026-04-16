@@ -1,1 +1,5 @@
 # timey-wimey-educational-app-for-kids
+# Kids will learn by either going down the Space or Earth story paths we created w/ The Doctor; view planet info or Earth info and learn new things
+# designed for kids (K-8) curious to learn about planets and/or Earth history 
+# Possibly the Space path since they know Earth and have a basic understanding of events on earth, whereas Space is unknown to them so they might be drawn to discovering it more. But the user could choose either option and look through the map in space or scroll through the timeline on Earth.
+# We aim to make next steps obvious for them to go to the next planet or next event on Earth; making a homepage logo or back button of sorts to take them back to the homepage/or button to give them the option to check out the other path on Space and Earth
