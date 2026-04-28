@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Mercury",
+    "radius": "1516 miles (2440 km)",
+    "distance_from_sun": 57.9,
+    "light_travel_time": 3.2,
+    "day_length": "88 Earth days",
+    "year_length": "88 Earth Days",
+    "tilt": 0.034,
+    "season_severity": "none",
+    "atmospheric_makeup": "thin",
+    "temp_min": "-290 F (-180 C)",
+    "temp_max": "800 F (430 C)",
+    "potential_for_life": "The environment is not conducive to life as we know it. Temperatures and solar radiation on Mercury are most likely to extreme for organisms to adapt to.",
+    "surface": "rocky",
+    "fun_features": "extreme temperature variations",
+    "moons": 0,
+    "rings": 0
+  },
+  {
+    "name": "Venus",
+    "diameter": 12104,
+    "distance_from_sun": 108.2,
+    "moons": 0
+  },
+  {
+    "name": "Earth",
+    "diameter": 12742,
+    "distance_from_sun": 149.6,
+    "moons": 1
+  },
+  {
+    "name": "Mars",
+    "diameter": 6779,
+    "distance_from_sun": 227.9,
+    "moons": 2
+  },
+  {
+    "name": "Jupiter",
+    "diameter": 139822,
+    "distance_from_sun": 778.5,
+    "moons": 79
+  },
+  {
+    "name": "Saturn",
+    "diameter": 116464,
+    "distance_from_sun": 1434,
+    "moons": 82
+  },
+  {
+    "name": "Uranus",
+    "diameter": 50724,
+    "distance_from_sun": 2871,
+    "moons": 27
+  },
+  {
+    "name": "Neptune",
+    "diameter": 49244,
+    "distance_from_sun": 4495,
+    "moons": 14
+  }
+]
