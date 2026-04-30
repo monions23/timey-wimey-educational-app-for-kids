@@ -14,4 +14,6 @@ Make sure you're in react_app:
 
 ```
 npm install tailwindcss @tailwindcss/vite tw-animate-css
+npm install react-router-dom
+npm install react-zoom-pan-pinch
 ```
