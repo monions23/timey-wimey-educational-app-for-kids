@@ -4,25 +4,26 @@ import { useState } from "react";
 
 function getEventIcon(eventId: string): string {
   const icons: Record<string, string> = {
-    "big-bang": "💥",
-    "earth-forms": "🌍",
-    "first-life": "🦠",
-    "dinosaurs": "🦕",
-    "pyramids": "🔺",
-    "printing-press": "📚",
-    "declaration": "📜",
-    "steam-engine": "🚂",
-    "civil-war": "⚔️",
-    "light-bulb": "💡",
-    "wright-brothers": "✈️",
-    "world-war-1": "🎖️",
-    "penicillin": "💊",
-    "world-war-2": "🌍",
-    "moon-landing": "🌕",
-    "internet": "🌐",
-    "smartphones": "📱",
+    "big-bang": "/Timeline-Icons/Big-Bang.png",
+    "eruption-of-vesuvius": "/Timeline-Icons/Pompeii.png",
+    "elizabethan-england": "/Timeline-Icons/Elizabethan-England.png",
+    "renaissance-venice": "/Timeline-Icons/Venice.png",
+    "sharespeare": "/Timeline-Icons/Shakespeare.png",
+    "english-civil-war": "/Timeline-Icons/English-Civil-War.png",
+    "palace-of-versailles": "/Timeline-Icons/Versailles.png",
+    "working-class-london": "/Timeline-Icons/Working-Class-England.png",
+    "vincent-van-gogh": "/Timeline-Icons/Vincent-Van-Gogh.png",
+    "westward-expansion": "/Timeline-Icons/Westward-Expansion.png",
+    "victorian-scotland": "/Timeline-Icons/Victorian-Scotland.png",
+    "industrial-revolution": "/Timeline-Icons/Industrial-Revolution.png",
+    "pre-ww1": "/Timeline-Icons/Pre-WWI.png",
+    "agatha-christie": "/Timeline-Icons/Agatha-Christie.png",
+    "great-depression": "/Timeline-Icons/New-York.png",
+    "the-blitz": "/Timeline-Icons/The-Blitz.png",
+    "rise-of-tv": "/Timeline-Icons/Rise-Of-TV.png",
+    "modern-era": "/Timeline-Icons/Modern-Era.png",
   };
-  return icons[eventId] || "⭐";
+  return icons[eventId] || "/Timeline-Icons/default.png";
 }
 
 // Group events by century
@@ -37,6 +38,16 @@ const centuryGroups = {
   "1900s": timelineEvents.filter(e => e.section === "1900s"),
   "2000s": timelineEvents.filter(e => e.id === "smartphones"),
 };
+
+/* const centuryGroups = {
+  "Ancient History": timelineEvents.filter(e => e.id === "big-bang"),
+  "79 AD": timelineEvents.filter(e => e.id === "eruption-of-vesuvius"),
+  "1500s": timelineEvents.filter(e => ["elizabethan-england", "renaissance-venice", "sharespeare"].includes(e.id)),
+  "1600s": timelineEvents.filter(e => ["english-civil-war", "palace-of-versailles"].includes(e.id)),
+  "1800s": timelineEvents.filter(e => ["working-class-london", "vincent-van-gogh", "westward-expansion", "victorian-scotland", "industrial-revolution"].includes(e.id)),
+  "1900s": timelineEvents.filter(e => ["pre-ww1", "agatha-christie", "great-depression", "the-blitz", "rise-of-tv"].includes(e.id)),
+  "2000s": timelineEvents.filter(e => e.id === "modern-era"),
+}; */
 
 export default function Timeline() {
   const [selectedEvent, setSelectedEvent] = useState<TimelineEvent | null>(null);
@@ -106,8 +117,8 @@ export default function Timeline() {
                           }`}
                         >
                           {/* Thumbnail */}
-                          <div className="w-16 h-16 bg-black border-4 border-cream flex items-center justify-center text-3xl flex-shrink-0">
-                            {getEventIcon(event.id)}
+                          <div className="w-16 h-16 bg-black border-4 border-cream flex items-center justify-center flex-shrink-0">
+                            <img src={getEventIcon(event.id)} alt={event.name} className="w-full h-full object-cover" />
                           </div>
                           {/* Event label */}
                           <div>
@@ -189,7 +200,7 @@ export default function Timeline() {
               <div>
                 {/* Top: Image */}
                 <div className="bg-navy-blue border-b-4 border-cream flex items-center justify-center py-12">
-                  <div className="text-9xl">{getEventIcon(selectedEvent.id)}</div>
+                  <img src={getEventIcon(selectedEvent.id)} alt={selectedEvent.name} className="w-48 h-48 object-contain" />
                 </div>
 
                 {/* Bottom: Description */}
