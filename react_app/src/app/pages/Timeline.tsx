@@ -155,31 +155,9 @@ export default function Timeline() {
               </p>
 
               {/* The Doctor illustration */}
-              <div className="flex justify-center items-end gap-6 mb-8">
-                {/* TARDIS */}
-                <div className="w-32 h-48 bg-navy-blue border-4 border-cream relative">
-                  <div className="absolute top-2 left-1/2 -translate-x-1/2 w-20 h-4 bg-cream"></div>
-                  <div className="absolute top-8 left-2 right-2 grid grid-cols-2 gap-1">
-                    <div className="w-full h-10 bg-black opacity-50"></div>
-                    <div className="w-full h-10 bg-black opacity-50"></div>
-                  </div>
-                  <div className="absolute top-24 inset-x-2 bottom-2 border-2 border-cream"></div>
+                <div className="flex justify-center mb-8">
+                  <img src="/The-Doctor.png" alt="The Doctor" className="h-64 object-contain" />
                 </div>
-                {/* The Doctor */}
-                <div className="w-24 h-40 relative">
-                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full">
-                    <div className="w-16 h-20 bg-cream mx-auto relative mb-2">
-                      <div className="absolute -top-2 left-0 right-0 h-4 bg-orange"></div>
-                      <div className="absolute top-6 left-3 w-2 h-2 bg-black rounded-full"></div>
-                      <div className="absolute top-6 right-3 w-2 h-2 bg-black rounded-full"></div>
-                      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-8 h-1 bg-black rounded-full"></div>
-                    </div>
-                    <div className="w-20 h-28 bg-navy-blue border-4 border-cream mx-auto">
-                      <div className="w-8 h-2 bg-orange mx-auto mt-2"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
 
               <p className="text-3xl text-orange italic">
                 "Allons-y! The universe is waiting!"
