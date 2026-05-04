@@ -163,8 +163,7 @@ export default function Timeline() {
               <div>
                 {/* Top: Image */}
                 <div className="bg-navy-blue border-b-4 border-cream flex items-center justify-center py-12">
-                  <img src={getEventIcon(selectedEvent.id)} alt={selectedEvent.name} className="w-48 h-48 object-contain" />
-                </div>
+                  <img src={getEventIcon(selectedEvent.id)} alt={selectedEvent.name} className="w-120 h-100 object-contain" />                </div>
 
                 {/* Bottom: Description */}
                 <div className="bg-orange text-black border-b-4 border-cream p-8">
