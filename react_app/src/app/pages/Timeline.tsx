@@ -141,7 +141,7 @@ export default function Timeline() {
 
               {/* The Doctor illustration */}
                 <div className="flex justify-center mb-8">
-                  <img src="/The-Doctor.png" alt="The Doctor" className="h-64 object-contain" />
+                  <img src="/The-Doctor-White-Shadow.png" alt="The Doctor" className="h-64 object-contain" />
                 </div>
 
               <p className="text-3xl text-orange italic">
