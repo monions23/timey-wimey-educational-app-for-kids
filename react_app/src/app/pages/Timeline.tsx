@@ -4,26 +4,26 @@ import { useState } from "react";
 
 function getEventIcon(eventId: string): string {
   const icons: Record<string, string> = {
-    "big-bang": "/Timeline-Icons/Big-Bang.png",
-    "pompeii": "/Timeline-Icons/Pompeii.png",
-    "elizabethan-england": "/Timeline-Icons/Elizabethan-England.png",
-    "renaissance-venice": "/Timeline-Icons/Venice.png",
-    "shakespeare": "/Timeline-Icons/Shakespeare.png",
-    "english-civil-war": "/Timeline-Icons/English-Civil-War.png",
-    "palace-of-versailles": "/Timeline-Icons/Versailles.png",
-    "frost-fair": "/Timeline-Icons/Working-Class-England.png",
-    "van-gogh": "/Timeline-Icons/Vincent-Van-Gogh.png",
-    "american-frontier": "/Timeline-Icons/Westward-Expansion.png",
-    "victorian-scotland": "/Timeline-Icons/Victorian-Scotland.png",
-    "victorian-london": "/Timeline-Icons/Industrial-Revolution.png",
-    "pre-wwi-england": "/Timeline-Icons/Pre-WWI.png",
-    "roaring-twenties": "/Timeline-Icons/Agatha-Christie.png",
-    "great-depression": "/Timeline-Icons/New-York.png",
-    "wwii-blitz": "/Timeline-Icons/The-Blitz.png",
-    "queens-coronation": "/Timeline-Icons/Rise-Of-TV.png",
-    "turn-of-millennium": "/Timeline-Icons/Modern-Era.png",
+    "big-bang": "/Earth-Timeline-Images/Big-Bang.png",
+    "pompeii": "/Earth-Timeline-Images/Pompeii.png",
+    "elizabethan-england": "/Earth-Timeline-Images/Elizabethian-England.png",
+    "renaissance-venice": "/Earth-Timeline-Images/Venice.png",
+    "shakespeare": "/Earth-Timeline-Images/Shakespeare-Play.png",
+    "english-civil-war": "/Earth-Timeline-Images/English-War-Aftermath.png",
+    "palace-of-versailles": "/Earth-Timeline-Images/Palace-Versallies.png",
+    "frost-fair": "/Earth-Timeline-Images/Working-Class-England.png",
+    "van-gogh": "/Earth-Timeline-Images/Van-Gogh.png",
+    "american-frontier": "/Earth-Timeline-Images/The-American-Frontier.png",
+    "victorian-scotland": "/Earth-Timeline-Images/Victorian-Scotland.png",
+    "victorian-london": "/Earth-Timeline-Images/Industrial-Revolution.png",
+    "pre-wwi-england": "/Earth-Timeline-Images/Pre-WWI-England.png",
+    "roaring-twenties": "/Earth-Timeline-Images/Agatha-Christie.png",
+    "great-depression": "/Earth-Timeline-Images/The-Great-Depression-and-New-York.png",
+    "wwii-blitz": "/Earth-Timeline-Images/The-Blitz.png",
+    "queens-coronation": "/Earth-Timeline-Images/Rise-of-the-TV.png",
+    "turn-of-millennium": "/Earth-Timeline-Images/Modern-Era.png",
   };
-  return icons[eventId] || "/Timeline-Icons/default.png";
+  return icons[eventId] || "/Earth-Timeline-Images/default.png";
 }
 
 // Group events by section
