@@ -5,49 +5,34 @@ import { useState } from "react";
 function getEventIcon(eventId: string): string {
   const icons: Record<string, string> = {
     "big-bang": "/Timeline-Icons/Big-Bang.png",
-    "eruption-of-vesuvius": "/Timeline-Icons/Pompeii.png",
+    "pompeii": "/Timeline-Icons/Pompeii.png",
     "elizabethan-england": "/Timeline-Icons/Elizabethan-England.png",
     "renaissance-venice": "/Timeline-Icons/Venice.png",
-    "sharespeare": "/Timeline-Icons/Shakespeare.png",
+    "shakespeare": "/Timeline-Icons/Shakespeare.png",
     "english-civil-war": "/Timeline-Icons/English-Civil-War.png",
     "palace-of-versailles": "/Timeline-Icons/Versailles.png",
-    "working-class-london": "/Timeline-Icons/Working-Class-England.png",
-    "vincent-van-gogh": "/Timeline-Icons/Vincent-Van-Gogh.png",
-    "westward-expansion": "/Timeline-Icons/Westward-Expansion.png",
+    "frost-fair": "/Timeline-Icons/Working-Class-England.png",
+    "van-gogh": "/Timeline-Icons/Vincent-Van-Gogh.png",
+    "american-frontier": "/Timeline-Icons/Westward-Expansion.png",
     "victorian-scotland": "/Timeline-Icons/Victorian-Scotland.png",
-    "industrial-revolution": "/Timeline-Icons/Industrial-Revolution.png",
-    "pre-ww1": "/Timeline-Icons/Pre-WWI.png",
-    "agatha-christie": "/Timeline-Icons/Agatha-Christie.png",
+    "victorian-london": "/Timeline-Icons/Industrial-Revolution.png",
+    "pre-wwi-england": "/Timeline-Icons/Pre-WWI.png",
+    "roaring-twenties": "/Timeline-Icons/Agatha-Christie.png",
     "great-depression": "/Timeline-Icons/New-York.png",
-    "the-blitz": "/Timeline-Icons/The-Blitz.png",
-    "rise-of-tv": "/Timeline-Icons/Rise-Of-TV.png",
-    "modern-era": "/Timeline-Icons/Modern-Era.png",
+    "wwii-blitz": "/Timeline-Icons/The-Blitz.png",
+    "queens-coronation": "/Timeline-Icons/Rise-Of-TV.png",
+    "turn-of-millennium": "/Timeline-Icons/Modern-Era.png",
   };
   return icons[eventId] || "/Timeline-Icons/default.png";
 }
 
-// Group events by century
+// Group events by section
 const centuryGroups = {
-  "Ancient History": timelineEvents.filter(e => e.section === "before1800s").slice(0, 4),
-  "BCE": timelineEvents.filter(e => e.id === "pyramids"),
-  "1400s": timelineEvents.filter(e => e.id === "printing-press"),
-  "1700s": timelineEvents.filter(e => e.id === "declaration"),
-  "1800s": timelineEvents.filter(e => e.section === "before1800s" && ["steam-engine", "civil-war", "light-bulb"].includes(e.id)).concat(
-    timelineEvents.filter(e => e.section === "1800s")
-  ),
-  "1900s": timelineEvents.filter(e => e.section === "1900s"),
-  "2000s": timelineEvents.filter(e => e.id === "smartphones"),
+  "Ancient History": timelineEvents.filter(e => e.section === "ancient"),
+  "Early Modern": timelineEvents.filter(e => e.section === "earlyModern"),
+  "Industrial Age": timelineEvents.filter(e => e.section === "industrial"),
+  "Modern Era": timelineEvents.filter(e => e.section === "modern"),
 };
-
-/* const centuryGroups = {
-  "Ancient History": timelineEvents.filter(e => e.id === "big-bang"),
-  "79 AD": timelineEvents.filter(e => e.id === "eruption-of-vesuvius"),
-  "1500s": timelineEvents.filter(e => ["elizabethan-england", "renaissance-venice", "sharespeare"].includes(e.id)),
-  "1600s": timelineEvents.filter(e => ["english-civil-war", "palace-of-versailles"].includes(e.id)),
-  "1800s": timelineEvents.filter(e => ["working-class-london", "vincent-van-gogh", "westward-expansion", "victorian-scotland", "industrial-revolution"].includes(e.id)),
-  "1900s": timelineEvents.filter(e => ["pre-ww1", "agatha-christie", "great-depression", "the-blitz", "rise-of-tv"].includes(e.id)),
-  "2000s": timelineEvents.filter(e => e.id === "modern-era"),
-}; */
 
 export default function Timeline() {
   const [selectedEvent, setSelectedEvent] = useState<TimelineEvent | null>(null);
