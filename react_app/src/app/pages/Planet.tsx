@@ -53,15 +53,12 @@ export default function Planet() {
         <div className="flex-1 flex items-center justify-center">
           {/* Planet visualization - a large circle with color based on planet data */}
           {/* Styling - fixed width and height of 500px, rounded-full to make it a circle, border with cream color, relative positioning for layering, and overflow hidden to contain any child elements */}
-          <div
-            className="w-[500px] h-[500px] rounded-full border-8 border-cream relative overflow-hidden"
-            style={{
-              backgroundColor: planet.color,
-            }}
-          >
-            {/* Planet layers - shown when checkbox is checked */}
-            {/* Each layer is a smaller circle with different color and label, positioned absolutely within the planet container */}
-            {/* Styling - absolute positioning to stack layers, rounded-full for circles, border with white color, transition for smooth appearance, and different background colors for each layer */}
+          <div className="w-[550px] h-[550px] rounded-full overflow-hidden relative">
+            <img
+              src={planet.vectorImage}
+              alt={planet.name}
+              className={`w-full h-full ${planet.id === "saturn" ? "object-contain" : "object-cover"}`}
+            />
             {showLayers && (
               <div className="absolute inset-0 flex items-center justify-center">
                 {planet.layers.map((layer, index) => {
@@ -70,55 +67,27 @@ export default function Planet() {
                   return (
                     <div
                       key={index}
-                      className="absolute rounded-full border-4 border-white transition-all duration-500"
+                      className="absolute rounded-full border-4 border-white transition-all duration-500 flex items-center justify-center"
                       style={{
                         width: `${width}%`,
                         height: `${width}%`,
                         backgroundColor: colors[index % colors.length],
                       }}
                     >
-                      {index === 0 && (
-                        <div className="absolute inset-0 flex items-center justify-center text-black font-bold text-sm text-center px-2">
-                          {layer}
-                        </div>
-                      )}
+                      <div className="text-black font-bold text-sm text-center px-2">
+                        {layer}
+                      </div>
                     </div>
                   );
                 })}
               </div>
-            )}
-
-            {/* Planet surface features - hidden when showing layers */}
-            {/* Styling - absolute positioning to place features on the planet, different shapes and colors based on planet data, and opacity for a subtle effect */}
-            {!showLayers && (
-              <>
-                {planet.id === "saturn" && (
-                  <div
-                    className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 border-4 border-cream rounded-full opacity-70"
-                    style={{ width: "140%", height: "30%" }}
-                  />
-                )}
-                {planet.id === "jupiter" && (
-                  <>
-                    <div className="absolute top-1/3 left-0 right-0 h-12 bg-orange opacity-40 rounded-full"></div>
-                    <div className="absolute top-1/2 left-0 right-0 h-16 bg-cream opacity-30 rounded-full"></div>
-                  </>
-                )}
-                {planet.id === "earth" && (
-                  <>
-                    <div className="absolute top-1/4 left-1/4 w-24 h-20 bg-[#228B22] rounded-full opacity-80"></div>
-                    <div className="absolute top-1/2 right-1/4 w-32 h-24 bg-[#228B22] rounded-full opacity-80"></div>
-                    <div className="absolute bottom-1/4 left-1/3 w-20 h-16 bg-[#228B22] rounded-full opacity-80"></div>
-                  </>
-                )}
-              </>
             )}
           </div>
         </div>
 
         {/* Right side: Info dialog - retro styled */}
         {/* Styling - fixed width of 550px, navy blue background, cream border with thickness of 8px, rounded corners, padding of 8 (2rem), relative positioning for layering, max height of 90vh to prevent overflow, and vertical scrollbar if content exceeds max height */}
-        <div className="w-[550px] bg-navy-blue border-8 border-cream rounded-2xl p-8 relative max-h-[90vh] overflow-y-auto">
+        <div className="w-[600px] bg-navy-blue border-8 border-cream rounded-2xl p-8 relative max-h-[90vh] overflow-y-auto">
           {/* Planet name as heading */}
           {/* Styling - centered text, font size of 5xl (3rem), orange color, margin bottom of 2rem, uppercase text, wider letter spacing, and serif font */}
           <h1
