@@ -108,8 +108,8 @@ export const planets: Planet[] = [
     orbitSpeed: 3.0,
     layers: ["Crust", "Mantle", "Outer Core", "Inner Core"],
     funFacts: [
-      "Earth is the only planet in the solar system with liquid water on its surface.",
-      'Earth is the only planet in the solar system whose English name does not come from Greek or Roman mythology. Instead, the name Earth has roots in Old English and Germanic languages. It means "the ground".',
+      "Earth is the only planet in the solar system with liquid water on its surface. Almost all of Earth's volcanoes are hidden under the oceans. Earth's longest mountain range is also underwater; it is four times longer than the Andes, Rockies, and Himalayas combined.",
+      "Earth's crust is made up of large plates that are constantly moving. When plates grind past each other, ride up under one another, or collide, we get earthquakes!",
       "Earth is the only planet in the solar system with only one moon. The Moon stabilizes our planet's wobble, which has made the climate less variable over thousands of years.",
     ],
   },
@@ -140,8 +140,8 @@ export const planets: Planet[] = [
     layers: ["Crust", "Rocky Mantle", "Dense Core"],
     funFacts: [
       "A Martian day is called a sol - which is short for solar day.",
-      "Fun Fact 2",
-      "Fun Fact 3",
+      "Mars has a vast canyon system called Valles Marineris that is long enough to stretch from California to New York! It also has Olympus Mons, which is the largest volcano in the solar system..",
+      "Scientists think that Mars used to be warmer and covered with water. Today, water on Mars is found in the form of water-ice just under the surface in the planet's north and south poles.",
     ],
   },
   {
@@ -173,7 +173,11 @@ export const planets: Planet[] = [
       "Metallic hydrogen",
       "Central Core",
     ],
-    funFacts: ["Fun Fact 1", "Fun Fact 2", "Fun Fact 3"],
+    funFacts: [
+      "Jupiter is the largest and oldest planet in the solar system.",
+      "Jupiter has a Great Red Spot, a giant storm bigger than Earth that has raged for hundreds of years.",
+      "While Jupiter itself cannot support life as we know it, its moons, such as Europa, potentially could. Europa is one of the likeliest places to find life elsewhere in our solar system. Scientists believe that a large ocean lies below Europa's icy crust.",
+    ],
   },
   {
     id: "saturn",
@@ -204,7 +208,11 @@ export const planets: Planet[] = [
       "Metallic Hydrogen",
       "Dense Core",
     ],
-    funFacts: ["Fun Fact 1", "Fun Fact 2", "Fun Fact 3"],
+    funFacts: [
+      "Saturn is the farthest planet away from Earth discovered by the human eye - without telescopes or fancy technology!",
+      "Saturn's rings are made of billions of small chunks of ice and rock coated with other materials like dust. Each ring orbits at a different speed around the planet.",
+      "Saturn is less dense than water, meaning it is not very heavy for its size. It is the only planet in the solar system that could float in a bathtub!",
+    ],
   },
   {
     id: "uranus",
@@ -229,7 +237,11 @@ export const planets: Planet[] = [
     orbitRadius: 440,
     orbitSpeed: 0.7,
     layers: ["Gas Atmosphere", "Fluid, Icy Materials", "Small Rocky Core"],
-    funFacts: ["Fun Fact 1", "Fun Fact 2", "Fun Fact 3"],
+    funFacts: [
+      'Though often said differently, Uranus is actually pronounced "your-uh-nus"!',
+      "Uranus was first seen through a telescope in 1781 by a scientist named William Herschel. At first, Herschel thought it was a comet or star!",
+      "Scientists believe Uranus may have crashed into an Earth-sized object long ago, causing its very large tilt.",
+    ],
   },
   {
     id: "neptune",
@@ -255,7 +267,11 @@ export const planets: Planet[] = [
     orbitRadius: 520,
     orbitSpeed: 0.5,
     layers: ["Small rocky core", "Fluid, Icy Materials", "Gas Atmosphere"],
-    funFacts: ["Fun Fact 1", "Fun Fact 2", "Fun Fact 3"],
+    funFacts: [
+      "Neptune is the first planet that was discovered through mathematical predictions rather than through regular observations of the sky.",
+      "Scientists think that there might be an ocean of super hot water under Neptune's cold clouds. Very high pressure keeps the water locked inside.",
+      "Neptune is the windiest planet in the solar system! Its winds can be faster than 1200 miles per hour (2000 km per hour) - three times stronger than Jupiter's winds, and nine times stronger than Earth's.",
+    ],
   },
   {
     id: "pluto",
@@ -273,7 +289,7 @@ export const planets: Planet[] = [
       "-375°F (-225°C) on average, though temperatures can get as cold as -375°F to -400°F (-226°C to -240°C)",
     potentialForLife:
       "Unlikely that life could exist there - the surface is extremely cold - but the interior is warmer",
-    surface: "Rocky and icy with mountains, plains, and frozen nitrogen",
+    surface: "Rocky and icy with mountains, valleys, plains, and craters.",
     moons: 5,
     rings: 0,
     color: "#C4A484",
@@ -281,6 +297,12 @@ export const planets: Planet[] = [
     orbitRadius: 600,
     orbitSpeed: 0.4,
     layers: ["Rocky Core", "Water Ice Mantle", "Icy Crust"],
-    funFacts: ["Fun Fact 1", "Fun Fact 2", "Fun Fact 3"],
+    funFacts: [
+      "Pluto used to be thought of as the ninth planet of the solar system, but in 2006, scientists labelled it as a \
+      dwarf planet instead. A dwarf planet is an object in orbit around the Sun that is large enough to pull itself into a \
+      nearly round shape but has not been able to clear its orbit of debris.",
+      "Pluto is not very wide compared to the major planets. It only stretches about half the width of the United States.",
+      "Pluto was named by an 11 year old girl named Venetia Burney. Venetia lived in Oxford, England and suggested to her grandfather that it be named after the Roman god of the underworld.",
+    ],
   },
 ];
