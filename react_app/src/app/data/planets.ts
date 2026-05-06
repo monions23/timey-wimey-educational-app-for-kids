@@ -13,6 +13,7 @@ export interface Planet {
   moons: number;
   rings: number;
   color: string;
+  vectorImage: string;
   orbitRadius: number;
   orbitSpeed: number;
   layers: string[];
@@ -34,9 +35,10 @@ export const planets: Planet[] = [
     moons: 0,
     rings: 0,
     color: "#A0A0A0",
+    vectorImage: "/Planet-Images/mercury.png",
     orbitRadius: 80,
     orbitSpeed: 4.8,
-    layers: ["Iron core", "Rocky mantle", "Thin crust"]
+    layers: ["Iron core", "Rocky mantle", "Thin crust"],
   },
   {
     id: "venus",
@@ -53,9 +55,10 @@ export const planets: Planet[] = [
     moons: 0,
     rings: 0,
     color: "#FFA500",
+    vectorImage: "/Planet-Images/venus.png",
     orbitRadius: 120,
     orbitSpeed: 3.5,
-    layers: ["Iron core", "Rocky mantle", "Basaltic crust"]
+    layers: ["Iron core", "Rocky mantle", "Basaltic crust"],
   },
   {
     id: "earth",
@@ -72,9 +75,10 @@ export const planets: Planet[] = [
     moons: 1,
     rings: 0,
     color: "#4A90E2",
+    vectorImage: "/Planet-Images/earth.png",
     orbitRadius: 160,
     orbitSpeed: 3.0,
-    layers: ["Inner core", "Outer core", "Mantle", "Crust"]
+    layers: ["Inner core", "Outer core", "Mantle", "Crust"],
   },
   {
     id: "mars",
@@ -86,14 +90,16 @@ export const planets: Planet[] = [
     tilt: "25.2°",
     atmosphere: "95% Carbon Dioxide, thin atmosphere",
     temperature: "-140°C to 20°C",
-    potentialForLife: "Possible - scientists are searching for signs of past life",
+    potentialForLife:
+      "Possible - scientists are searching for signs of past life",
     surface: "Rocky, rusty iron oxide (red!), with canyons and volcanoes",
     moons: 2,
     rings: 0,
     color: "#CD5C5C",
+    vectorImage: "/Planet-Images/mars.png",
     orbitRadius: 200,
     orbitSpeed: 2.4,
-    layers: ["Iron core", "Rocky mantle", "Iron oxide crust"]
+    layers: ["Iron core", "Rocky mantle", "Iron oxide crust"],
   },
   {
     id: "jupiter",
@@ -110,9 +116,15 @@ export const planets: Planet[] = [
     moons: 95,
     rings: 4,
     color: "#DAA520",
+    vectorImage: "/Planet-Images/jupiter.png",
     orbitRadius: 280,
     orbitSpeed: 1.3,
-    layers: ["Rocky core", "Metallic hydrogen", "Liquid hydrogen", "Gas atmosphere"]
+    layers: [
+      "Rocky core",
+      "Metallic hydrogen",
+      "Liquid hydrogen",
+      "Gas atmosphere",
+    ],
   },
   {
     id: "saturn",
@@ -129,9 +141,15 @@ export const planets: Planet[] = [
     moons: 146,
     rings: 7,
     color: "#F4A460",
+    vectorImage: "/Planet-Images/saturn.png",
     orbitRadius: 360,
     orbitSpeed: 1.0,
-    layers: ["Rocky core", "Metallic hydrogen", "Liquid hydrogen", "Gas atmosphere"]
+    layers: [
+      "Rocky core",
+      "Metallic hydrogen",
+      "Liquid hydrogen",
+      "Gas atmosphere",
+    ],
   },
   {
     id: "uranus",
@@ -148,9 +166,14 @@ export const planets: Planet[] = [
     moons: 28,
     rings: 13,
     color: "#87CEEB",
+    vectorImage: "/Planet-Images/uranus.png",
     orbitRadius: 440,
     orbitSpeed: 0.7,
-    layers: ["Rocky core", "Icy mantle (water, methane, ammonia)", "Gas atmosphere"]
+    layers: [
+      "Rocky core",
+      "Icy mantle (water, methane, ammonia)",
+      "Gas atmosphere",
+    ],
   },
   {
     id: "neptune",
@@ -167,9 +190,14 @@ export const planets: Planet[] = [
     moons: 16,
     rings: 6,
     color: "#4169E1",
+    vectorImage: "/Planet-Images/neptune.png",
     orbitRadius: 520,
     orbitSpeed: 0.5,
-    layers: ["Rocky core", "Icy mantle (water, methane, ammonia)", "Gas atmosphere"]
+    layers: [
+      "Rocky core",
+      "Icy mantle (water, methane, ammonia)",
+      "Gas atmosphere",
+    ],
   },
   {
     id: "pluto",
@@ -186,8 +214,9 @@ export const planets: Planet[] = [
     moons: 5,
     rings: 0,
     color: "#C4A484",
+    vectorImage: "/Planet-Images/pluto.png",
     orbitRadius: 600,
     orbitSpeed: 0.4,
-    layers: ["Rocky core", "Water ice mantle", "Frozen nitrogen crust"]
-  }
+    layers: ["Rocky core", "Water ice mantle", "Frozen nitrogen crust"],
+  },
 ];

@@ -1,7 +1,42 @@
 import { Link, useNavigate } from "react-router"; // For navigation between pages
 import { planets, Planet } from "../data/planets"; // Planet data for rendering the solar system
-import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+import {
+  TransformWrapper,
+  TransformComponent,
+  useControls,
+} from "react-zoom-pan-pinch";
 import { useState, useEffect, useMemo } from "react";
+
+import "../../styles/app.css";
+
+const Controls = ({ isZooming }: { isZooming: boolean }) => {
+  const { zoomIn, zoomOut } = useControls();
+  return (
+    // {/* Zoom Controls */}
+    <div
+      className="fixed left-6 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-4 transition-opacity duration-700"
+      style={{
+        opacity: isZooming ? 0 : 1,
+        pointerEvents: isZooming ? "none" : "auto",
+      }}
+    >
+      <button
+        onClick={() => zoomIn()}
+        className="w-16 h-16 bg-orange text-black border-4 border-cream hover:bg-cream hover:text-orange transition-colors text-3xl flex items-center justify-center"
+        aria-label="Zoom in"
+      >
+        +
+      </button>
+      <button
+        onClick={() => zoomOut()}
+        className="w-16 h-16 bg-orange text-black border-4 border-cream hover:bg-cream hover:text-orange transition-colors text-3xl flex items-center justify-center"
+        aria-label="Zoom out"
+      >
+        −
+      </button>
+    </div>
+  );
+};
 
 // Space page Component
 export default function Space() {
@@ -112,7 +147,7 @@ export default function Space() {
       {/* Navigation */}
       <nav
         className="relative z-50 p-6 flex justify-between items-center transition-opacity duration-700"
-        style={{ opacity: isZooming ? 0 : 1 }}
+        style={{ background: "transparent", opacity: isZooming ? 0 : 1 }}
       >
         <Link to="/">
           <div className="w-16 h-16 bg-navy-blue border-4 border-cream cursor-pointer hover:bg-orange transition-colors flex items-center justify-center text-2xl">
@@ -126,117 +161,117 @@ export default function Space() {
         </Link>
       </nav>
 
-      {/* Zoom Controls */}
       <div
-        className="fixed left-6 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-4 transition-opacity duration-700"
-        style={{ opacity: isZooming ? 0 : 1 }}
+        style={{
+          width: "100%",
+          height: "100%",
+          transform: "translateY(-62px)",
+        }}
       >
-        <button
-          onClick={handleZoomIn}
-          className="w-16 h-16 bg-orange text-black border-4 border-cream hover:bg-cream hover:text-orange transition-colors text-3xl flex items-center justify-center"
-          aria-label="Zoom in"
-        >
-          +
-        </button>
-        <button
-          onClick={handleZoomOut}
-          className="w-16 h-16 bg-orange text-black border-4 border-cream hover:bg-cream hover:text-orange transition-colors text-3xl flex items-center justify-center"
-          aria-label="Zoom out"
-        >
-          −
-        </button>
-      </div>
-
-      <TransformWrapper wrapperStyle={{ width: "100%", height: "100%" }}>
-        <TransformComponent wrapperStyle={{ width: "100%", height: "100%" }}>
-          {/* Solar System Orrery */}
-          <div
-            className="relative z-10 flex items-center justify-center overflow-hidden"
-            style={{ height: "calc(100vh - 100px)" }}
+        <TransformWrapper>
+          <Controls isZooming={isZooming} />
+          <TransformComponent
+            wrapperStyle={{
+              width: "100%",
+              height: "100%",
+              zIndex: 30,
+              display: "flex",
+              justifyContent: "center",
+              alignContent: "center",
+              overflow: "visible",
+            }}
           >
+            {/* Solar System Orrery */}
             <div
-              className="relative transition-all duration-700 ease-in-out"
-              style={{
-                width: "1200px",
-                height: "1200px",
-                transform: isZooming
-                  ? `translate(${zoomTarget.x}px, ${zoomTarget.y}px) scale(${zoom})`
-                  : `scale(${zoom})`,
-              }}
+              className="relative z-10 flex items-center justify-center overflow-hidden"
+              style={{ height: "calc(100vh - 100px)" }}
             >
-              {/* Sun */}
               <div
-                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-orange rounded-full border-4 border-cream shadow-[0_0_40px_rgba(255,165,0,0.8)] transition-opacity duration-700"
-                style={{ opacity: isZooming ? 0 : 1 }}
+                className="relative transition-all duration-700 ease-in-out"
+                style={{
+                  width: "1200px",
+                  height: "1200px",
+                  transform: isZooming
+                    ? `translate(${zoomTarget.x}px, ${zoomTarget.y}px) scale(${zoom})`
+                    : `scale(${zoom})`,
+                }}
               >
-                <div className="absolute inset-2 bg-cream rounded-full opacity-50"></div>
-              </div>
+                {/* Sun */}
+                <div
+                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-orange rounded-full border-4 border-cream shadow-[0_0_40px_rgba(255,165,0,0.8)] transition-opacity duration-700"
+                  style={{ opacity: isZooming ? 0 : 1 }}
+                >
+                  <div className="absolute inset-2 bg-cream rounded-full opacity-50"></div>
+                </div>
 
-              {/* Planets in orbit */}
-              {planets.map((planet) => {
-                const angle = rotation * planet.orbitSpeed * (Math.PI / 180);
-                const x = Math.cos(angle) * planet.orbitRadius;
-                const y = Math.sin(angle) * planet.orbitRadius;
+                {/* Planets in orbit */}
+                {planets.map((planet) => {
+                  const angle = rotation * planet.orbitSpeed * (Math.PI / 180);
+                  const x = Math.cos(angle) * planet.orbitRadius;
+                  const y = Math.sin(angle) * planet.orbitRadius;
 
-                const isClickedPlanet = clickedPlanetId === planet.id;
-                const shouldFadeOut = isZooming && !isClickedPlanet;
+                  const isClickedPlanet = clickedPlanetId === planet.id;
+                  const shouldFadeOut = isZooming && !isClickedPlanet;
 
-                return (
-                  <div key={planet.id}>
-                    {/* Orbit path */}
-                    <div
-                      className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 border-2 border-cream rounded-full transition-opacity duration-700 pointer-events-none"
-                      style={{
-                        width: planet.orbitRadius * 2 + "px",
-                        height: planet.orbitRadius * 2 + "px",
-                        opacity: isZooming ? 0 : 0.4,
-                      }}
-                    />
-
-                    {/* Planet */}
-                    <div
-                      className="absolute cursor-pointer group transition-opacity duration-700"
-                      style={{
-                        left: `calc(50% + ${x}px)`,
-                        top: `calc(50% + ${y}px)`,
-                        transform: "translate(-50%, -50%)",
-                        pointerEvents: isZooming ? "none" : "auto",
-                        opacity: shouldFadeOut ? 0 : 1,
-                      }}
-                      onClick={() => handlePlanetClick(planet)}
-                    >
+                  return (
+                    <div key={planet.id}>
+                      {/* Orbit path */}
                       <div
-                        className="rounded-full border-4 border-cream group-hover:border-orange transition-all group-hover:scale-125"
+                        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 border-4 border-cream rounded-full transition-opacity duration-700 pointer-events-none"
                         style={{
-                          width:
-                            planet.id === "jupiter" || planet.id === "saturn"
-                              ? "32px"
-                              : "20px",
-                          height:
-                            planet.id === "jupiter" || planet.id === "saturn"
-                              ? "32px"
-                              : "20px",
-                          backgroundColor: planet.color,
+                          width: planet.orbitRadius * 2 + "px",
+                          height: planet.orbitRadius * 2 + "px",
+                          opacity: isZooming ? 0 : 0.4,
                         }}
+                      />
+
+                      {/* Planet */}
+                      <div
+                        className="absolute cursor-pointer group transition-opacity duration-700"
+                        style={{
+                          left: `calc(50% + ${x}px)`,
+                          top: `calc(50% + ${y}px)`,
+                          transform: "translate(-50%, -50%)",
+                          pointerEvents: isZooming ? "none" : "auto",
+                          opacity: shouldFadeOut ? 0 : 1,
+                        }}
+                        onClick={() => handlePlanetClick(planet)}
                       >
-                        {planet.id === "saturn" && (
-                          <div
-                            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 border-2 border-cream rounded-full opacity-70"
-                            style={{ width: "48px", height: "8px" }}
+                        <div
+                          className={`transition-all group-hover:scale-125 ${planet.id === "saturn" ? "" : "rounded-full overflow-hidden"}`}
+                          style={{
+                            width:
+                              planet.id === "saturn"
+                                ? "120px"
+                                : planet.id === "jupiter"
+                                  ? "70px"
+                                  : "30px",
+                            height:
+                              planet.id === "saturn"
+                                ? "auto"
+                                : planet.id === "jupiter"
+                                  ? "70px"
+                                  : "30px",
+                          }}
+                        >
+                          <img
+                            src={planet.vectorImage}
+                            alt={planet.name}
+                            className={`w-full h-auto ${planet.id === "saturn" ? "object-contain" : "object-cover"}`}
                           />
-                        )}
-                      </div>
-                      <div className="absolute top-full mt-2 left-1/2 -translate-x-1/2 text-cream text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
-                        {planet.name}
+                        </div>
+                        <div className="absolute top-full mt-2 left-1/2 -translate-x-1/2 text-cream text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
+                          {planet.name}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
-          </div>
-        </TransformComponent>
-      </TransformWrapper>
+          </TransformComponent>
+        </TransformWrapper>
+      </div>
 
       {/* Instructions */}
       <div
