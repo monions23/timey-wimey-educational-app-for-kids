@@ -2,6 +2,8 @@ import { useParams, Link } from "react-router"; // For navigation between pages 
 import { planets } from "../data/planets"; // Imports the data
 import { useState, useEffect } from "react";
 
+import InfoComponent from "./InfoComponent";
+
 // Planet Component - shows detailed info about a specific planet
 export default function Planet() {
   const { planetId } = useParams();
@@ -28,6 +30,22 @@ export default function Planet() {
     );
   }
 
+  // for hours and minutes formatting
+  const hoursText =
+    planet.lightTimeHours > 0
+      ? `${planet.lightTimeHours} ${planet.lightTimeHours === 1 ? "hour" : "hours"}`
+      : "";
+
+  const minutesText =
+    planet.lightTimeMin > 0 ? `${planet.lightTimeMin} minutes` : "";
+
+  let separator;
+  if (hoursText != "" && minutesText != "") {
+    separator = " and ";
+  } else {
+    separator = "";
+  }
+
   return (
     // Main container with fade-in animation based on animationStage state
     // Styling - background fills entire screen and is black, cream text, relative positioning for layering, overflow hidden to prevent scrollbars from animations, and transition for opacity changes
@@ -47,10 +65,10 @@ export default function Planet() {
 
       {/* Main layout */}
       {/* Flex container with two columns: left for planet visualization and right for info dialog */}
-      <div className="flex items-center justify-between min-h-screen p-8 gap-12">
+      <div className="flex items-stretch justify-between min-h-screen p-8 gap-6">
         {/* Left side: Large planet */}
         {/* Styling - flex-1 to take up remaining space, flexbox to center content */}
-        <div className="flex-1 flex items-center justify-center">
+        <div className="flex-1 flex items-center justify-center relative">
           {/* Planet visualization - a large circle with color based on planet data */}
           {/* Styling - fixed width and height of 500px, rounded-full to make it a circle, border with cream color, relative positioning for layering, and overflow hidden to contain any child elements */}
           <div className="w-[550px] h-[550px] rounded-full overflow-hidden relative">
@@ -67,14 +85,24 @@ export default function Planet() {
                   return (
                     <div
                       key={index}
-                      className="absolute rounded-full border-4 border-white transition-all duration-500 flex items-center justify-center"
+                      className="absolute rounded-full border-4 border-white transition-all duration-500"
                       style={{
                         width: `${width}%`,
                         height: `${width}%`,
                         backgroundColor: colors[index % colors.length],
+                        zIndex: index + 10,
+                        // Keeps the circle centered relative to the parent
+                        top: "50%",
+                        left: "50%",
+                        transform: "translate(-50%, -50%)",
                       }}
                     >
-                      <div className="text-black font-bold text-sm text-center px-2">
+                      <div
+                        className="absolute w-full text-rose-950 font-bold text-s text-center px-2"
+                        style={{
+                          top: "20px", // Positions text at the top of the ring
+                        }}
+                      >
                         {layer}
                       </div>
                     </div>
@@ -82,6 +110,26 @@ export default function Planet() {
                 })}
               </div>
             )}
+          </div>
+
+          {/* View Planet Layers Checkbox */}
+          <div className="absolute bottom-1 right-1 flex flex-row items-center gap-2 bg-black/50 p-4 rounded-xl backdrop-blur-sm border-2 border-cream/30">
+            <div className="text-2xl text-cream">View Planet Layers:</div>
+            <button
+              onClick={() => setShowLayers(!showLayers)}
+              className="w-10 h-10 border-4 border-cream flex items-center justify-center bg-black hover:bg-orange transition-colors"
+            >
+              {showLayers && (
+                <svg width="30" height="30" viewBox="0 0 30 30">
+                  <path
+                    d="M 5 15 L 12 22 L 25 9"
+                    stroke="var(--color-cream)"
+                    strokeWidth="3"
+                    fill="none"
+                  />
+                </svg>
+              )}
+            </button>
           </div>
         </div>
 
@@ -101,17 +149,26 @@ export default function Planet() {
           {/* Styling - grid with two columns, gap of 4 (1rem) between columns, and margin bottom of 6 (1.5rem) */}
           <div className="grid grid-cols-2 gap-4 mb-6">
             <div>
-              <div className="text-2xl text-cream mb-2">Size:</div>
+              <div className="text-2xl text-cream mb-2">Diameter:</div>
               <div className="bg-cream text-black px-3 py-2 text-lg border-4 border-orange">
-                {planet.size}
+                {planet.diameter}
               </div>
             </div>
             <div>
               <div className="text-2xl text-cream mb-2">Distance:</div>
               <div className="bg-cream text-black px-3 py-2 text-lg border-4 border-orange">
                 {planet.distanceFromSun}
+                <InfoComponent inputType="auDesc"></InfoComponent>
               </div>
             </div>
+          </div>
+
+          <div className="mb-6">
+            <h2 className="text-center">
+              Light takes {hoursText}
+              {separator}
+              {minutesText} to travel from the Sun to {planet.name}.
+            </h2>
           </div>
 
           {/* Length of Day */}
@@ -122,6 +179,7 @@ export default function Planet() {
             {/* Styling - cream background, black text, horizontal padding of 3 (0.75rem), vertical padding of 2 (0.5rem), text size of lg (1.125rem), and border of 4px with orange color */}
             <div className="bg-cream text-black px-3 py-2 text-lg border-4 border-orange">
               {planet.lengthOfDay}
+              <InfoComponent inputType="dayLength"></InfoComponent>
             </div>
           </div>
 
@@ -130,6 +188,7 @@ export default function Planet() {
             <div className="text-2xl text-cream mb-2">Length of Year:</div>
             <div className="bg-cream text-black px-3 py-2 text-lg border-4 border-orange">
               {planet.lengthOfYear}
+              <InfoComponent inputType="yearLength"></InfoComponent>
             </div>
           </div>
 
@@ -138,12 +197,14 @@ export default function Planet() {
             <div className="text-2xl text-cream mb-2">Tilt:</div>
             <div className="bg-cream text-black px-3 py-2 text-lg border-4 border-orange">
               {planet.tilt}
+              <InfoComponent inputType="tilt"></InfoComponent>
             </div>
           </div>
 
           {/* Atmospheric Makeup */}
           <div className="mb-4">
             <div className="text-2xl text-cream mb-2">Atmospheric Makeup:</div>
+            <div className="text-1xl mb-2">{planet.atmosphereDescription}</div>
             <div className="flex flex-wrap gap-2">
               {planet.atmosphere.split(",").map((element, i) => (
                 <div
@@ -180,28 +241,8 @@ export default function Planet() {
             </div>
           </div>
 
-          {/* View Planet Layers Checkbox */}
-          <div className="flex items-center gap-4 mb-6">
-            <div className="text-2xl text-cream">View Planet Layers:</div>
-            <button
-              onClick={() => setShowLayers(!showLayers)}
-              className="w-12 h-12 border-4 border-cream flex items-center justify-center bg-black hover:bg-orange transition-colors"
-            >
-              {showLayers && (
-                <svg width="30" height="30" viewBox="0 0 30 30">
-                  <path
-                    d="M 5 15 L 12 22 L 25 9"
-                    stroke="var(--color-cream)"
-                    strokeWidth="3"
-                    fill="none"
-                  />
-                </svg>
-              )}
-            </button>
-          </div>
-
           {/* Moons and Rings - two column */}
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-4 mb-6">
             <div>
               <div className="text-2xl text-cream mb-2">Moons:</div>
               <div className="bg-cream text-black px-3 py-2 text-lg border-4 border-orange text-center">
@@ -215,34 +256,34 @@ export default function Planet() {
               </div>
             </div>
           </div>
+
+          {/* Fun Facts */}
+          <div className="mb-6">
+            <div className="text-2xl text-cream mb-2">Fun Facts</div>
+            <div className="bg-cream text-black px-3 py-2 text-lg border-4 border-orange">
+              {planet.funFacts.map((fact, index) => (
+                <div
+                  key={index}
+                  className="flex items-center bg-cream border-b-4 last:border-b-0 border-orange p-6"
+                >
+                  <div className="text-5xl text-orange mr-6 flex-shrink-0 w-16">
+                    {index + 1}
+                  </div>
+                  <p className="text-lg leading-relaxed">{fact}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 
       {/* TARDIS and Doctor at bottom left */}
       <div className="absolute bottom-8 left-8 flex items-end gap-6">
-        {/* TARDIS */}
-        <div className="w-24 h-40 bg-navy-blue border-4 border-cream relative">
-          <div className="absolute top-2 left-1/2 -translate-x-1/2 w-16 h-4 bg-cream"></div>
-          <div className="absolute top-8 left-2 right-2 grid grid-cols-2 gap-1">
-            <div className="w-full h-8 bg-black opacity-50"></div>
-            <div className="w-full h-8 bg-black opacity-50"></div>
-          </div>
-          <div className="absolute top-20 inset-x-2 bottom-2 border-2 border-cream"></div>
-        </div>
-        {/* The Doctor */}
-        <div className="w-20 h-32 relative">
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full">
-            <div className="w-12 h-16 bg-cream mx-auto relative mb-2">
-              <div className="absolute -top-2 left-0 right-0 h-4 bg-orange"></div>
-              <div className="absolute top-4 left-2 w-2 h-2 bg-black rounded-full"></div>
-              <div className="absolute top-4 right-2 w-2 h-2 bg-black rounded-full"></div>
-              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 w-6 h-1 bg-black rounded-full"></div>
-            </div>
-            <div className="w-16 h-24 bg-navy-blue border-4 border-cream mx-auto">
-              <div className="w-6 h-2 bg-orange mx-auto mt-2"></div>
-            </div>
-          </div>
-        </div>
+        <img
+          src="/The-Doctor-White-Shadow.png"
+          alt="The Doctor"
+          className="h-50 object-contain"
+        />
       </div>
     </div>
   );

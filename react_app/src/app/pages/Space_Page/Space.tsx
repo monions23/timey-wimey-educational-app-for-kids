@@ -1,42 +1,11 @@
 import { Link, useNavigate } from "react-router"; // For navigation between pages
-import { planets, Planet } from "../data/planets"; // Planet data for rendering the solar system
-import {
-  TransformWrapper,
-  TransformComponent,
-  useControls,
-} from "react-zoom-pan-pinch";
+import { planets, Planet } from "../../data/planets"; // Planet data for rendering the solar system
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { useState, useEffect, useMemo } from "react";
 
-import "../../styles/app.css";
+import { Controls } from "./Controls";
 
-const Controls = ({ isZooming }: { isZooming: boolean }) => {
-  const { zoomIn, zoomOut } = useControls();
-  return (
-    // {/* Zoom Controls */}
-    <div
-      className="fixed left-6 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-4 transition-opacity duration-700"
-      style={{
-        opacity: isZooming ? 0 : 1,
-        pointerEvents: isZooming ? "none" : "auto",
-      }}
-    >
-      <button
-        onClick={() => zoomIn()}
-        className="w-16 h-16 bg-orange text-black border-4 border-cream hover:bg-cream hover:text-orange transition-colors text-3xl flex items-center justify-center"
-        aria-label="Zoom in"
-      >
-        +
-      </button>
-      <button
-        onClick={() => zoomOut()}
-        className="w-16 h-16 bg-orange text-black border-4 border-cream hover:bg-cream hover:text-orange transition-colors text-3xl flex items-center justify-center"
-        aria-label="Zoom out"
-      >
-        −
-      </button>
-    </div>
-  );
-};
+// import "../../styles/app.css";
 
 // Space page Component
 export default function Space() {
@@ -244,14 +213,14 @@ export default function Space() {
                               planet.id === "saturn"
                                 ? "120px"
                                 : planet.id === "jupiter"
-                                  ? "70px"
-                                  : "30px",
+                                  ? "80px"
+                                  : "40px",
                             height:
                               planet.id === "saturn"
                                 ? "auto"
                                 : planet.id === "jupiter"
-                                  ? "70px"
-                                  : "30px",
+                                  ? "80px"
+                                  : "40px",
                           }}
                         >
                           <img
@@ -260,7 +229,7 @@ export default function Space() {
                             className={`w-full h-auto ${planet.id === "saturn" ? "object-contain" : "object-cover"}`}
                           />
                         </div>
-                        <div className="absolute top-full mt-2 left-1/2 -translate-x-1/2 text-cream text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
+                        <div className="absolute top-full mt-2 left-1/2 -translate-x-1/2 text-cream text-2xl whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
                           {planet.name}
                         </div>
                       </div>
