@@ -54,6 +54,24 @@ export default function Timeline() {
 
   return (
     <div className="min-h-screen bg-black text-cream flex flex-col">
+      <style>{`
+        ::-webkit-scrollbar {
+          width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+          background: #0a0a2e;
+        }
+        ::-webkit-scrollbar-thumb {
+          background: #ff6600;
+          border: 2px solid #f5f0e8;
+          border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+          background: #f5f0e8;
+          border-color: #ff6600;
+        }
+      `}</style>
+
       {/* Sticky Navigation */}
       <nav className="sticky top-0 z-50 bg-navy-blue border-b-4 border-cream p-6">
         <div className="max-w-[1440px] mx-auto flex justify-between items-center">
@@ -162,8 +180,9 @@ export default function Timeline() {
               {/* Image and Description - Stacked Layout */}
               <div>
                 {/* Top: Image */}
-                <div className="bg-navy-blue border-b-4 border-cream flex items-center justify-center py-12">
-                  <img src={getEventIcon(selectedEvent.id)} alt={selectedEvent.name} className="w-120 h-100 object-contain" />                </div>
+                <div className="bg-navy-blue border-b-4 border-cream w-full">
+                  <img src={getEventIcon(selectedEvent.id)} alt={selectedEvent.name} className="w-full h-full object-cover" />
+                </div>
 
                 {/* Bottom: Description */}
                 <div className="bg-orange text-black border-b-4 border-cream p-8">

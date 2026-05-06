@@ -23,7 +23,7 @@ export const timelineEvents: TimelineEvent[] = [
   },
   {
     id: "pompeii",
-    name: "Eruption of Vesuvius / Pompeii",
+    name: "Pompeii (Eruption of Vesuvius)",
     section: "ancient",
     year: "79 AD",
     description: "It's the 23rd of August, 79 AD, and this is one of the most extraordinary — and most heartbreaking — moments in all of human history. The city of Pompeii, in what is now southern Italy, is home to around 20,000 people. Real, brilliant, funny, complicated Romans — with shops and schools and street food and arguments about politics. And then Mount Vesuvius erupts. The people of Pompeii didn't know Vesuvius was a volcano. They built their whole city right at the foot of it because the soil was incredibly good for growing grapes. When it erupted, it sent a cloud of ash and rock 21 miles into the sky. The city was buried in hours. But here's why archaeologists love Pompeii — that same ash that destroyed the city preserved it. When they excavated it, nearly 1,800 years later, they found buildings, paintings, bread still in the ovens. A city frozen in time.",
@@ -83,7 +83,7 @@ export const timelineEvents: TimelineEvent[] = [
   },
   {
     id: "palace-of-versailles",
-    name: "Palace of Versailles / French Court",
+    name: "Palace of Versailles (French Court)",
     section: "earlyModern",
     year: "1727–1764",
     description: "The Palace of Versailles. Even the name sounds like a sigh, doesn't it? Louis the Fourteenth — the Sun King — built Versailles just outside Paris in the late 1600s, and it became the most extravagant royal residence the world had ever seen. 700 rooms. 2,000 acres of gardens. 20,000 people living and working within its walls. By the 1700s, Versailles wasn't just a palace — it was the centre of Europe. Kings, queens, ambassadors, artists, philosophers — they all passed through those mirrored halls. This was also the age of the Enlightenment — a period when thinkers started asking big, bold questions. Why do kings have power? What are the rights of ordinary people? The irony is that all that luxury and grandeur was happening while ordinary French people were getting poorer and angrier. And that anger, simmering for decades, would eventually become the French Revolution.",
@@ -167,7 +167,7 @@ export const timelineEvents: TimelineEvent[] = [
   },
   {
     id: "roaring-twenties",
-    name: "The Roaring Twenties / Agatha Christie",
+    name: "Agatha Christie (The Roaring Twenties)",
     section: "modern",
     year: "1926",
     description: "The 1920s! A decade that really committed to being a decade. The First World War ended in 1918, and the world — exhausted, grieving, desperate for something good — decided to have the most extraordinary party. Jazz music is exploding out of America and into dance halls across the world. Women are cutting their hair short, wearing shorter skirts, going out unchaperoned, voting. New technology is arriving everywhere at once — cars, telephones, radio, cinema. And then there's Agatha Christie — publishing her first novel in 1920, more or less inventing the modern detective story. But 1926 specifically? That's the year Agatha Christie herself became a mystery. Her marriage was falling apart, and in December she simply vanished. Her car was found abandoned near a lake. The whole country searched for her for eleven days. Over a thousand police officers involved. She was eventually found at a hotel, registered under a false name, claiming no memory of how she got there. She never publicly explained it. Ever.",
@@ -179,7 +179,7 @@ export const timelineEvents: TimelineEvent[] = [
   },
   {
     id: "great-depression",
-    name: "The Great Depression / New York",
+    name: "The Great Depression (New York)",
     section: "modern",
     year: "1930",
     description: "New York City, 1930. And the party is very much over. The Wall Street Crash happened in October 1929 — the American stock market collapsed almost overnight, wiping out fortunes, destroying banks, and triggering the worst economic crisis the modern world had ever seen. By 1930, around 15 million Americans are unemployed. That's roughly one in four workers — just, suddenly, with no job and no income. In New York, Central Park filled up with shanty towns called Hoovervilles, where people who had lost everything built something from nothing. And yet — New York kept building. The Empire State Building was constructed between 1930 and 1931, right in the teeth of the Depression. 3,400 workers a day, many of them recent immigrants. It was finished ahead of schedule. In sixteen months. During the worst economic crisis in living memory. The Depression eventually ended, partly through government programmes called the New Deal, and partly through the economic surge of the Second World War. It took a decade.",
@@ -191,7 +191,7 @@ export const timelineEvents: TimelineEvent[] = [
   },
   {
     id: "wwii-blitz",
-    name: "WWII London / The Blitz",
+    name: "The Blitz (WWII London)",
     section: "modern",
     year: "1941",
     description: "London, 1941. Britain is at war with Nazi Germany. And while soldiers are fighting on battlefields across Europe and North Africa, something extraordinary is happening right here, in the streets of London. Every night, German aircraft fly over British cities and drop bombs. Night after night after night, for eight solid months. Around 43,000 civilians were killed in the Blitz. Entire neighbourhoods were flattened. And here's what gets me, every single time: people kept going. Shops would be half-demolished and they'd hang a sign in the rubble saying 'More Open Than Usual.' Neighbours who'd never spoken before started sharing food, shelter, everything they had. Children were evacuated out of the cities — packed onto trains with little cardboard labels round their necks, sent to live with strangers in the countryside. Away from their parents. Some for months, some for years. The Blitz didn't break London. If anything, it made it something fiercer.",
@@ -203,7 +203,7 @@ export const timelineEvents: TimelineEvent[] = [
   },
   {
     id: "queens-coronation",
-    name: "Queen's Coronation / Rise of Television",
+    name: "Rise of Television (Queen's Coronation)",
     section: "modern",
     year: "1953",
     description: "1953. And something is happening in living rooms across Britain that has never, ever happened before. People are buying televisions. In 1953, a television set is extraordinary. It's a piece of furniture. Families save up for months to afford one. Neighbours crowd into each other's sitting rooms to watch it together. And the reason everyone suddenly needs one? June the 2nd, 1953. The Coronation of Queen Elizabeth the Second. For the first time in history, a coronation is being broadcast live on television. Around 27 million people in Britain watch it — more than half the entire population of the country. It's a postwar moment, and that matters enormously. Britain in 1953 is still recovering — rationing only fully ends the following year, bombed streets are still being rebuilt. People need something to celebrate. A young queen, 27 years old, crowned in gold and watched by millions. It feels like a beginning.",
