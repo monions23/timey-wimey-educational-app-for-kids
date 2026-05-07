@@ -13,14 +13,14 @@ export const Controls = ({ isZooming }: { isZooming: boolean }) => {
     >
       <button
         onClick={() => zoomIn()}
-        className="w-16 h-16 bg-orange text-black border-4 border-cream hover:bg-cream hover:text-orange transition-colors text-3xl flex items-center justify-center"
+        className="w-16 h-16 bg-orange text-black border-4 border-cream rounded-lg hover:bg-cream hover:text-orange transition-colors text-3xl flex items-center justify-center"
         aria-label="Zoom in"
       >
         +
       </button>
       <button
         onClick={() => zoomOut()}
-        className="w-16 h-16 bg-orange text-black border-4 border-cream hover:bg-cream hover:text-orange transition-colors text-3xl flex items-center justify-center"
+        className="w-16 h-16 bg-orange text-black border-4 border-cream rounded-lg hover:bg-cream hover:text-orange transition-colors text-3xl flex items-center justify-center"
         aria-label="Zoom out"
       >
         −

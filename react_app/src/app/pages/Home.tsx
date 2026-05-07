@@ -46,14 +46,14 @@ export default function Home() {
           {/* Space Button */}
           {/* Styling - horizontal padding of 4rem, vertical padding of 1.5rem, orange background, black text, font size of 2xl (1.5rem), border of 4px with cream color, hover effects to swap background and text colors, transition for smooth hover effect, uppercase text, and wider letter spacing */}
           <Link to="/space">
-            <button className="px-16 py-6 bg-orange text-black text-2xl border-4 border-cream hover:bg-cream hover:text-orange transition-colors uppercase tracking-wider">
+            <button className="px-16 py-6 bg-navy-blue text-white text-2xl border-4 border-cream rounded-lg hover:bg-cream hover:text-navy-blue transition-colors uppercase tracking-wider">
               Space
             </button>
           </Link>
           {/* Earth Button */}
           {/* Styling - same as Space button but with navy blue background and cream text */}
           <Link to="/timeline">
-            <button className="px-16 py-6 bg-navy-blue text-cream text-2xl border-4 border-cream hover:bg-cream hover:text-navy-blue transition-colors uppercase tracking-wider">
+            <button className="px-16 py-6 bg-navy-blue text-cream text-2xl border-4 border-cream hover:bg-cream rounded-lg hover:text-navy-blue transition-colors uppercase tracking-wider">
               Earth
             </button>
           </Link>

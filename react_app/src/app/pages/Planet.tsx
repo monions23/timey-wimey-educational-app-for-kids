@@ -71,14 +71,28 @@ export default function Planet() {
         <div className="flex-1 flex items-center justify-center relative">
           {/* Planet visualization - a large circle with color based on planet data */}
           {/* Styling - fixed width and height of 500px, rounded-full to make it a circle, border with cream color, relative positioning for layering, and overflow hidden to contain any child elements */}
-          <div className="w-[550px] h-[550px] rounded-full overflow-hidden relative">
+          <div
+            className={`relative flex items-center justify-center ${planet.id === "saturn" ? "w-[800px] h-[550px]" : "w-[550px] h-[550px] rounded-full overflow-hidden"}`}
+          >
             <img
               src={planet.vectorImage}
               alt={planet.name}
-              className={`w-full h-full ${planet.id === "saturn" ? "object-contain" : "object-cover"}`}
+              className={`w-full h-full ${planet.id === "saturn" ? "object-contain" : "object-cover rounded-full overflow-hidden"}`}
             />
             {showLayers && (
-              <div className="absolute inset-0 flex items-center justify-center">
+              <div
+                className="absolute inset-0 flex items-center justify-center"
+                style={
+                  planet.id === "saturn"
+                    ? {
+                        width: "46%",
+                        height: "60%",
+                        left: "27%",
+                        top: "20%",
+                      } // tune these to match Saturn's body
+                    : { inset: 0 }
+                }
+              >
                 {planet.layers.map((layer, index) => {
                   const width = 100 - index * (80 / planet.layers.length);
                   const colors = ["#CD5C5C", "#DAA520", "#F4A460", "#DEB887"];
@@ -94,13 +108,14 @@ export default function Planet() {
                         // Keeps the circle centered relative to the parent
                         top: "50%",
                         left: "50%",
-                        transform: "translate(-50%, -50%)",
+                        transform: `translate(-50%, -50%) ${planet.id === "saturn" ? "rotate(15deg)" : ""}`,
                       }}
                     >
                       <div
-                        className="absolute w-full text-rose-950 font-bold text-s text-center px-2"
+                        className="absolute w-full text-rose-950 font-bold text-center px-2"
                         style={{
-                          top: "20px", // Positions text at the top of the ring
+                          top: planet.id === "saturn" ? "4px" : "20px",
+                          fontSize: planet.id === "saturn" ? "12px" : undefined,
                         }}
                       >
                         {layer}
@@ -117,7 +132,7 @@ export default function Planet() {
             <div className="text-2xl text-cream">View Planet Layers:</div>
             <button
               onClick={() => setShowLayers(!showLayers)}
-              className="w-10 h-10 border-4 border-cream flex items-center justify-center bg-black hover:bg-orange transition-colors"
+              className="w-10 h-10 border-4 border-cream rounded-lg flex items-center justify-center bg-black hover:bg-orange transition-colors"
             >
               {showLayers && (
                 <svg width="30" height="30" viewBox="0 0 30 30">

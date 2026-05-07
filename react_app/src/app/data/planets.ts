@@ -45,7 +45,7 @@ export const planets: Planet[] = [
     rings: 0,
     color: "#A0A0A0",
     vectorImage: "/Planet-Images/mercury.png",
-    orbitRadius: 80,
+    orbitRadius: 85,
     orbitSpeed: 4.8,
     layers: ["Solid crust", "Rocky mantle", "Central core"],
     funFacts: [
@@ -74,7 +74,7 @@ export const planets: Planet[] = [
     rings: 0,
     color: "#FFA500",
     vectorImage: "/Planet-Images/venus.png",
-    orbitRadius: 120,
+    orbitRadius: 125,
     orbitSpeed: 3.5,
     layers: ["Rocky Crust", "Hot-Rock Mantle", "Iron Core"],
     funFacts: [
@@ -104,12 +104,12 @@ export const planets: Planet[] = [
     rings: 0,
     color: "#4A90E2",
     vectorImage: "/Planet-Images/earth.png",
-    orbitRadius: 160,
+    orbitRadius: 165,
     orbitSpeed: 3.0,
     layers: ["Crust", "Mantle", "Outer Core", "Inner Core"],
     funFacts: [
       "Earth is the only planet in the solar system with liquid water on its surface. Almost all of Earth's volcanoes are hidden under the oceans. Earth's longest mountain range is also underwater; it is four times longer than the Andes, Rockies, and Himalayas combined.",
-      "Earth's crust is made up of large plates that are constantly moving. When plates grind past each other, ride up under one another, or collide, we get earthquakes!",
+      "Earth's crust is made up of large plates that are constantly moving. When plates grind past each other, ride up under one another, or collide, we get",
       "Earth is the only planet in the solar system with only one moon. The Moon stabilizes our planet's wobble, which has made the climate less variable over thousands of years.",
     ],
   },
@@ -135,7 +135,7 @@ export const planets: Planet[] = [
     rings: 0,
     color: "#CD5C5C",
     vectorImage: "/Planet-Images/mars.png",
-    orbitRadius: 200,
+    orbitRadius: 205,
     orbitSpeed: 2.4,
     layers: ["Crust", "Rocky Mantle", "Dense Core"],
     funFacts: [
@@ -165,7 +165,7 @@ export const planets: Planet[] = [
     rings: 4,
     color: "#DAA520",
     vectorImage: "/Planet-Images/jupiter.png",
-    orbitRadius: 280,
+    orbitRadius: 285,
     orbitSpeed: 1.3,
     layers: [
       "Gas Atmosphere",
@@ -200,7 +200,7 @@ export const planets: Planet[] = [
     rings: 7,
     color: "#F4A460",
     vectorImage: "/Planet-Images/saturn.png",
-    orbitRadius: 360,
+    orbitRadius: 365,
     orbitSpeed: 1.0,
     layers: [
       "Gas Atmosphere",
@@ -234,7 +234,7 @@ export const planets: Planet[] = [
     rings: 13,
     color: "#87CEEB",
     vectorImage: "/Planet-Images/uranus.png",
-    orbitRadius: 440,
+    orbitRadius: 445,
     orbitSpeed: 0.7,
     layers: ["Gas Atmosphere", "Fluid, Icy Materials", "Small Rocky Core"],
     funFacts: [
@@ -264,7 +264,7 @@ export const planets: Planet[] = [
     rings: 5,
     color: "#4169E1",
     vectorImage: "/Planet-Images/neptune.png",
-    orbitRadius: 520,
+    orbitRadius: 525,
     orbitSpeed: 0.5,
     layers: ["Small rocky core", "Fluid, Icy Materials", "Gas Atmosphere"],
     funFacts: [
@@ -294,7 +294,7 @@ export const planets: Planet[] = [
     rings: 0,
     color: "#C4A484",
     vectorImage: "/Planet-Images/pluto.png",
-    orbitRadius: 600,
+    orbitRadius: 605,
     orbitSpeed: 0.4,
     layers: ["Rocky Core", "Water Ice Mantle", "Icy Crust"],
     funFacts: [

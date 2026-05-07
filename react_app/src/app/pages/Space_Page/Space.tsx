@@ -32,26 +32,22 @@ export default function Space() {
     }));
   }, []);
 
+  // Planet animation - use requestAnimationFrame to increment planet rotation by 0.8 degrees for every frame
+  // For angle calculation - see {/* Planets in orbit */} comment
   useEffect(() => {
-    if (!isZooming) {
-      const interval = setInterval(() => {
-        setRotation((prev) => (prev + 0.2) % 360);
-      }, 50);
-      return () => clearInterval(interval);
-    }
+    let frameId: number;
+
+    const animate = () => {
+      if (!isZooming) {
+        setRotation((prev) => prev + 0.03); // smoother increment
+      }
+      frameId = requestAnimationFrame(animate);
+    };
+
+    frameId = requestAnimationFrame(animate);
+
+    return () => cancelAnimationFrame(frameId);
   }, [isZooming]);
-
-  const handleZoomIn = () => {
-    if (!isZooming) {
-      setZoom((prev) => Math.min(prev + 0.1, 1.5));
-    }
-  };
-
-  const handleZoomOut = () => {
-    if (!isZooming) {
-      setZoom((prev) => Math.max(prev - 0.1, 0.3));
-    }
-  };
 
   const handlePlanetClick = (planet: Planet) => {
     // Stop rotation first and save current position
@@ -60,9 +56,11 @@ export default function Space() {
     sessionStorage.setItem("solarSystemRotation", rotation.toString());
 
     // Calculate planet's exact position at current rotation
-    const angle = rotation * planet.orbitSpeed * (Math.PI / 180);
-    const x = Math.cos(angle) * planet.orbitRadius;
-    const y = Math.sin(angle) * planet.orbitRadius;
+    // Convert degrees to radians BEFORE using Math.cos/sin
+    const angleInRad = rotation * planet.orbitSpeed * (Math.PI / 180);
+
+    const x = Math.cos(angleInRad) * planet.orbitRadius;
+    const y = Math.sin(angleInRad) * planet.orbitRadius;
 
     // Planet position in the 1200px container (center is 600, 600)
     const planetX = 600 + x;
@@ -119,38 +117,38 @@ export default function Space() {
         style={{ background: "transparent", opacity: isZooming ? 0 : 1 }}
       >
         <Link to="/">
-          <div className="w-16 h-16 bg-navy-blue border-4 border-cream cursor-pointer hover:bg-orange transition-colors flex items-center justify-center text-2xl">
-            🏠
+          <div className="w-16 h-16 bg-navy-blue text-cream border-4 border-cream rounded-lg cursor-pointer hover:bg-cream hover:text-navy-blue transition-colors flex items-center justify-center text-2xl">
+            <i className="fa-regular fa-house"></i>
           </div>
         </Link>
         <Link to="/timeline">
-          <button className="px-8 py-3 bg-orange text-black border-4 border-cream hover:bg-cream hover:text-orange transition-colors uppercase tracking-wider">
+          <button className="px-8 py-3 bg-navy-blue text-cream border-4 border-cream rounded-lg hover:bg-cream hover:text-navy-blue transition-colors uppercase tracking-wider">
             Travel to Earth Timeline
           </button>
         </Link>
       </nav>
 
-      <div
-        style={{
-          width: "100%",
-          height: "100%",
-          transform: "translateY(-62px)",
-        }}
-      >
-        <TransformWrapper>
-          <Controls isZooming={isZooming} />
-          <TransformComponent
-            wrapperStyle={{
+      <TransformWrapper>
+        <Controls isZooming={isZooming} />
+        <TransformComponent
+          wrapperStyle={{
+            width: "100%",
+            height: "100%",
+            zIndex: 30,
+            display: "flex",
+            justifyContent: "center",
+            alignContent: "center",
+            overflow: "visible",
+          }}
+        >
+          <div
+            style={{
               width: "100%",
               height: "100%",
-              zIndex: 30,
-              display: "flex",
-              justifyContent: "center",
-              alignContent: "center",
-              overflow: "visible",
+              transform: "translateY(-62px)",
             }}
           >
-            {/* Solar System Orrery */}
+            {/* SOLAR SYSTEM DIV */}
             <div
               className="relative z-10 flex items-center justify-center overflow-hidden"
               style={{ height: "calc(100vh - 100px)" }}
@@ -167,7 +165,7 @@ export default function Space() {
               >
                 {/* Sun */}
                 <div
-                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-orange rounded-full border-4 border-cream shadow-[0_0_40px_rgba(255,165,0,0.8)] transition-opacity duration-700"
+                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-amber-500 rounded-full border-4 border-cream shadow-[0_0_40px_rgba(255,165,0,0.8)] transition-opacity duration-700"
                   style={{ opacity: isZooming ? 0 : 1 }}
                 >
                   <div className="absolute inset-2 bg-cream rounded-full opacity-50"></div>
@@ -175,9 +173,10 @@ export default function Space() {
 
                 {/* Planets in orbit */}
                 {planets.map((planet) => {
-                  const angle = rotation * planet.orbitSpeed * (Math.PI / 180);
-                  const x = Math.cos(angle) * planet.orbitRadius;
-                  const y = Math.sin(angle) * planet.orbitRadius;
+                  const angleInRad =
+                    rotation * planet.orbitSpeed * (Math.PI / 180);
+                  const x = Math.cos(angleInRad) * planet.orbitRadius;
+                  const y = Math.sin(angleInRad) * planet.orbitRadius;
 
                   const isClickedPlanet = clickedPlanetId === planet.id;
                   const shouldFadeOut = isZooming && !isClickedPlanet;
@@ -194,15 +193,20 @@ export default function Space() {
                         }}
                       />
 
-                      {/* Planet */}
+                      {/* Planet 
+                        fix to stop vibration - was calculating left and top position,, and then translating x and y by 50%
+                        those two calculations at once caused subtle disagreements, causing planet vibrations
+                        transform only calculations moved calc entirely to GPU compositor - browser calculates single operation once and animates without touching layout at all */}
+
                       <div
                         className="absolute cursor-pointer group transition-opacity duration-700"
                         style={{
-                          left: `calc(50% + ${x}px)`,
-                          top: `calc(50% + ${y}px)`,
-                          transform: "translate(-50%, -50%)",
+                          left: "50%",
+                          top: "50%",
+                          transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
                           pointerEvents: isZooming ? "none" : "auto",
                           opacity: shouldFadeOut ? 0 : 1,
+                          zIndex: Math.round(1000 / planet.orbitRadius),
                         }}
                         onClick={() => handlePlanetClick(planet)}
                       >
@@ -238,9 +242,9 @@ export default function Space() {
                 })}
               </div>
             </div>
-          </TransformComponent>
-        </TransformWrapper>
-      </div>
+          </div>
+        </TransformComponent>
+      </TransformWrapper>
 
       {/* Instructions */}
       <div
